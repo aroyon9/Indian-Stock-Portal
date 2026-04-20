@@ -1,0 +1,1 @@
+process.send&&process.send({ok:true}); setTimeout(()=>{},1000);

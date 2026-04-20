@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0b1020;
+  --panel: rgba(17, 26, 51, 0.6);
+  --text: #e7ecff;
+  --muted: #aab6e8;
+  --brand: #7aa2ff;
+  --border: rgba(255, 255, 255, 0.1);
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-text antialiased;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
+      "Segoe UI Emoji";
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-panel backdrop-blur-md border border-border rounded-2xl p-6 shadow-xl;
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+  }
+  
+  .btn-primary {
+    @apply bg-brand/20 hover:bg-brand/30 border border-border px-4 py-2 rounded-xl transition-all duration-200 active:scale-95;
+  }
+  
+  .input-premium {
+    @apply bg-black/25 border border-border rounded-xl px-4 py-2 focus:ring-2 focus:ring-brand/50 outline-none transition-all text-text;
+  }
+
+  select.input-premium {
+    @apply appearance-none;
+    background-color: rgba(0, 0, 0, 0.25);
+    color: var(--text);
+  }
+
+  select.input-premium option {
+    background-color: #111a33;
+    color: #e7ecff;
+  }
+
+  .search-premium {
+    @apply bg-black/30 border border-white/10 rounded-xl px-4 py-2.5 outline-none transition-all text-text focus:ring-2 focus:ring-brand/50 shadow-inner shadow-black/20;
+  }
+  
+  .input-premium::placeholder {
+    @apply text-muted/50;
+  }
+
+  .search-premium::placeholder {
+    @apply text-muted/60;
+  }
+
+  .ticker-bar {
+    @apply w-full overflow-hidden rounded-2xl border border-white/10 bg-black/25 backdrop-blur-md;
+  }
+
+  .ticker-track {
+    @apply flex items-center gap-8 whitespace-nowrap px-4 py-2;
+    width: max-content;
+    animation: ticker-scroll 80s linear infinite;
+  }
+
+  .ticker-bar:hover .ticker-track {
+    animation-play-state: paused;
+  }
+
+  .ticker-item {
+    @apply inline-flex items-center gap-3 text-sm font-black tracking-tight text-white/90 hover:text-white transition-colors;
+  }
+
+  .ticker-sym {
+    @apply text-white font-black;
+  }
+
+  .ticker-price {
+    @apply text-white/90 tabular-nums;
+  }
+
+  .ticker-change {
+    @apply inline-flex items-center gap-1 tabular-nums;
+  }
+
+  .ticker-arrow {
+    @apply text-xs;
+  }
+
+  .ticker-placeholder {
+    @apply text-xs font-medium text-muted py-1;
+  }
+}
+
+@layer base {
+  input {
+    @apply bg-transparent text-text;
+  }
+}
+
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "portal-frontend",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "next dev -p 3000 || npm run dev:standalone",
+    "dev:standalone": "npm run clean && next build && node -e \"const fs=require('fs'); fs.mkdirSync('.next/standalone/.next',{recursive:true}); fs.cpSync('.next/static','.next/standalone/.next/static',{recursive:true,force:true}); fs.cpSync('public','.next/standalone/public',{recursive:true,force:true});\" && node .next/standalone/server.js",
+    "clean": "node -e \"require('fs').rmSync('.next',{recursive:true,force:true}); require('fs').rmSync('.turbo',{recursive:true,force:true});\"",
+    "build": "npm run clean && next build",
+    "start": "node -e \"const fs=require('fs'); fs.mkdirSync('.next/standalone/.next',{recursive:true}); fs.cpSync('.next/static','.next/standalone/.next/static',{recursive:true,force:true}); fs.cpSync('public','.next/standalone/public',{recursive:true,force:true});\" && node .next/standalone/server.js",
+    "start:next": "next start -p 3000",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "lightweight-charts": "^4.2.1",
+    "next": "14.2.35",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "20.14.12",
+    "@types/react": "18.3.5",
+    "@types/react-dom": "18.3.0",
+    "autoprefixer": "10.4.19",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.35",
+    "postcss": "8.4.38",
+    "tailwindcss": "3.4.1",
+    "typescript": "5.6.2"
+  },
+  "overrides": {
+    "@next/eslint-plugin-next": {
+      "glob": "^10.5.0"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+# env
+.env
+
+# python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# node
+node_modules/
+.next/
+dist/
+out/
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# docker
+*.log
+.logs
+
+# local runtime data
+backend/.data/
